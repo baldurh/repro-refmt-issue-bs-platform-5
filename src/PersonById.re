@@ -28,16 +28,16 @@ let make = _children => {
   render: self =>
     <div>
       <form>
-        <h1> ("Get Person By Id" |> ste) </h1>
+        <h1> {"Get Person By Id" |> ste} </h1>
         <input
           autoFocus=true
           placeholder="Get this id"
           type_="text"
-          value=self.state.id
-          onChange=(onIdInputChange(self))
+          value={self.state.id}
+          onChange={onIdInputChange(self)}
           required=true
         />
-        <GetPersonById id=self.state.id />
+        <GetPersonById id={self.state.id} />
       </form>
     </div>,
 };

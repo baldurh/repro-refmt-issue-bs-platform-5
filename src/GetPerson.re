@@ -26,25 +26,22 @@ let make = _children => {
        */
     let getPersonQuery = GetPerson.make(~id="cjdgbi6d136a90157kpqef72m", ());
     <GetPersonQuery variables=getPersonQuery##variables>
-      ...(
-           ({result}) =>
-             <div>
-               <h1> ("Get Person: " |> ste) </h1>
-               (
-                 switch (result) {
-                 | Error(e) =>
-                   Js.log(e);
-                   "Something Went Wrong" |> ste;
-                 | Loading => "Loading" |> ste
-                 | Data(response) =>
-                   switch (response##person) {
-                   | None => "No Person Data" |> ste
-                   | Some(person) => <div> (person##name |> ste) </div>
-                   }
-                 }
-               )
-             </div>
-         )
+      ...{({result}) =>
+        <div>
+          <h1> {"Get Person: " |> ste} </h1>
+          {switch (result) {
+           | Error(e) =>
+             Js.log(e);
+             "Something Went Wrong" |> ste;
+           | Loading => "Loading" |> ste
+           | Data(response) =>
+             switch (response##person) {
+             | None => "No Person Data" |> ste
+             | Some(person) => <div> {person##name |> ste} </div>
+             }
+           }}
+        </div>
+      }
     </GetPersonQuery>;
   },
 };
